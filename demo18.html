@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   const inventory = [
+      {name:'apple',qty:0},
+      {name:'pear',qty:5},
+      {name:'bananer',qty:10}
+   ]   
+
+   // find()
+   const bananer = inventory.find(fruit => {return fruit.name == 'bananer'});
+
+   //findIndex()
+   const bananerIndex = inventory.findIndex( fruit => fruit.name == 'bananer' )
+
+   //some()
+   const isEnough = inventory.some( fruit => fruit.qty > 0 );
+
+   //every()
+   const isAllEnough = inventory.every( fruit => fruit.qty > 0 );
+
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const p = new Promise( (resolve,reject) =>{
+    	//resolve 处理成功的返回
+    	//reject 处理失败的返回
+
+    	//resolve('polyna is awesome!');
+    	//reject('alice is not awesome');
+
+    	setTimeout(()=>{
+    		//reject('alice is not awesome!');
+    		reject( Error('alice is not awesome!') )
+    	},2000);
+
+    }); 
+
+    p.then( data => { console.log(data) } )
+    .catch(err=>{console.error(err)})
+
+</script>
+</body>
+</html>

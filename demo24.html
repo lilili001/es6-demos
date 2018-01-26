@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+     const repos = [
+        { id:1,name:'grit',owner:'mojombo' },
+        { id:2,name:'jsawesome',owner:'vanpelt' },
+        { id:3,name:'merb-core',owner:'wycats' },
+     ];
+     const owners = [
+        {name:'mojombo',location:'San Fransisco'},
+        {name:'vanpelt',location:'Bay Minette'},
+        {name:'wycats',location:'Los Angeles CA'}
+     ]
+
+     function getRepoById(id){
+        return new Promise( (resolve,reject)=>{
+            const repo = repos.find( repo => repo.id === id );
+            repo ? resolve(repo) : reject(Error('No repo found'));
+        });
+     }
+
+     function comboundOwner(repo){
+        return new Promise((resolve,reject)=>{
+            const owner = owners.find( owner => owner.name === repo.owner );
+            if(owner){
+                repo.owner = owner;
+                resolve(repo);
+            }else{
+                reject(Error('can not found the owner'))
+            }
+        })
+     }
+
+     //得到repo后 返回 new Promise ( comboundOwner )
+     getRepoById(1)
+        .then(
+            repo => {
+                //console.log(repo);//{id: 1, name: "grit", owner: "mojombo"}
+                return comboundOwner(repo);//返回promise repo
+            }
+        )
+        .then(repo=>{
+            console.log(repo)
+         })
+        .catch(err=>{
+            console.log(err);//{id: 1, name: "grit", owner: {…}}
+         })
+
+</script>
+</body>
+</html>

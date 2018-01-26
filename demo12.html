@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom Purify with 标签模版</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/1.0.3/purify.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <form class="add-comment">
+        <textarea class="comment-text form-control"></textarea><br>
+        <button type="submit" class="btn btn-primary" value="submit">Post Comment</button>
+    </form>
+    <div class="comment"></div>
+</div>
+
+<script>
+    const form = document.querySelector('.add-comment');
+    const textarea = document.querySelector('.comment-text');
+    const comment = document.querySelector('.comment');
+
+    function sanitize(strings,...values){
+       const dirty = strings.reduce((prev,curr,i) => `${prev}${curr} ${values[i] || '' } ` , '');
+       return DOMPurify.sanitize(dirty);
+    }
+
+    form.addEventListener('submit',function(event){
+        event.preventDefault();
+        comment.innerHTML =sanitize
+            `
+            <div class="header-inner">Mary</div>
+            <div class="header-body">${textarea.value}</div>
+            `;
+    });
+
+</script>
+
+</body>
+</html>

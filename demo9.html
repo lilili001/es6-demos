@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://github.com/jgthms/bulma/tree/master/css">
+</head>
+<body>
+<script>
+    const jelley = {
+        name:'Jelley',
+        date:'2018-01-23',
+        todos:[
+            {name:'Go to school',completed:false},
+            {name:'Watch Moving',completed:true},
+            {name:'Running',completed:true},
+        ]
+    };
+    function renderTodos(todo) {
+        return `
+        <ul>
+            ${jelley.todos.map( todo=> `<li>
+                ${todo.name} ${todo.completed ? "✅": "❎"}
+                </li>` ).join("")}
+        </ul>
+            `;
+    }
+    const template = `
+        <nav class="panel">
+          <p class="panel-heading">
+            ${jelley.name}
+          </p>
+          <p class="panel-blocks">
+             ${renderTodos(jelley)}
+          </p>
+        </nav>
+    `;
+
+    document.body.innerHTML = template;
+</script>
+</body>
+</html>

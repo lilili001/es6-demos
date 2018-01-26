@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const Tom = {
+        name:"Tom Jones",
+        age:12,
+        family:{
+            mother:"Kate Jones",
+            father:"Richard Jones",
+            brother:"Howard Jones"
+        }
+    };
+    let name = "";
+    ({name,age} = Tom);
+    console.log(name);//Tom Jones
+    console.log(age);//12
+
+    //变量重命名 和 默认值
+    const father = "Dad";
+    const{ father:f,mother,brother ,sister='no sister as default value'} = Tom.family;// 将变量father 重命名为 f
+    console.log(f,mother,brother);
+
+    //eg
+    function appendChildDiv(options={}){
+        const {width='100px',height='100px',background='red',parent='body'} = options;
+        const div = document.createElement('div');
+        div.style.width = width;
+        div.style.height = height;
+        div.style.backgroundColor = background;
+        document.querySelector(parent).appendChild(div);
+    }
+    appendChildDiv({
+        width:'200px'
+    })
+</script>
+</body>
+</html>

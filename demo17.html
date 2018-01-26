@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+	<li>Go to school</li>
+	<li>Watch Movie</li>
+	<li>Go Home</li>
+</ul>
+
+<script>
+     const lis = document.querySelectorAll('li');
+
+     //将类数组转为数组
+     const lisArr = Array.from(lis);
+
+     //将类数组转为数组并map
+      const names = Array.from(lis,todo=>todo.textContent);
+      console.log(names);//["Go to school", "Watch Movie", "Go Home"]
+
+      function sum(){
+      	//arguments 是个对象 Object
+      	return Array.from(arguments).reduce( (prev,curr) => prev+curr,0 )
+      }
+
+      console.log( sum(1,2,3) )
+
+      //也适用于将字符串转为数组
+      const fxL = "victorier";
+      console.log( Array.from(fxL) );//["v", "i", "c", "t", "o", "r", "i", "e", "r"]
+
+</script>
+</body>
+</html>
